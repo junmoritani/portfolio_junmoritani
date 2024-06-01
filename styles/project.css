@@ -34,3 +34,16 @@
 img {
   width: 100%;
 }
+
+@media (max-width: 768px){
+  #title {
+    width: 90%;
+  }
+  .project-pages {
+    align-items: center;
+    width: 100%;
+  }
+  #title-main h1 {
+    font-size: 30px;
+  }
+}

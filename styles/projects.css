@@ -72,3 +72,17 @@
   font-size: 24px;
   margin-top: 20px;
 }
+
+@media (max-width: 768px){
+  .tags {
+    font-size: 16px;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+  }
+
+  .title {
+    font-size: 25px;
+  }
+}
