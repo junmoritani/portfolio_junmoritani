@@ -1,0 +1,119 @@
+#contact {
+  opacity: 1 !important;
+  font-weight: 800 !important;
+}
+
+main {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#containerContact {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+#form-contact {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 20px;
+}
+#title {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  text-align: center;
+  letter-spacing: 4px;
+  color: #e1745f;
+}
+
+.contact-inputs {
+  background-color: #fcfbf9;
+}
+
+#name,
+#email {
+  height: 40px;
+  border-radius: 50px;
+  border-width: 0;
+  box-shadow: inset 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  text-indent: 15px;
+  font-size: 18px;
+}
+
+#message {
+  height: 200px;
+  border-radius: 20px;
+  border-width: 0;
+  padding: 10px;
+  box-shadow: inset 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  text-indent: 10px;
+  font-size: 18px;
+}
+
+#name::placeholder,
+#email::placeholder {
+  color: #e1745f;
+  text-indent: 15px;
+  font-size: 18px;
+}
+
+#message::placeholder {
+  color: #e1745f;
+  text-indent: 10px;
+  font-size: 18px;
+}
+
+#btSubmit {
+  background-color: #e1745f;
+  color: #fcfbf9;
+  border-width: 0px;
+  padding: 10px;
+  width: 50%;
+  align-self: center;
+  border-radius: 20px;
+  font-weight: 900;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes buttonClick {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#btSubmit {
+  background-color: #e1745f;
+  color: #fcfbf9;
+  border-width: 0px;
+  padding: 10px;
+  width: 50%;
+  align-self: center;
+  border-radius: 20px;
+  font-weight: 900;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+#btSubmit:hover {
+  animation: buttonHover 0.3s ease;
+  transform: scale(1.05);
+}
+
+.button-clicked {
+  animation: buttonClick 0.3s ease;
+}

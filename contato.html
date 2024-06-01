@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/standard.css" />
+    <link rel="stylesheet" href="styles/header.css" />
+    <link rel="stylesheet" href="styles/contato.css" />
+    <script defer src="script/script.js"></script>
+  </head>
+  <body id="swup" class="transition-fade">
+    <header>
+      <p><a class="transition-link" href="home.html">GUSTAVO JUN</a></p>
+      <div id="navBar">
+        <a class="transition-link" id="projects" href="index.html">PROJECTS</a>
+        <a class="transition-link" id="contact" href="contato.html">CONTACT</a>
+        <a
+          id="resume"
+          href="https://drive.google.com/file/d/1i4hoCdiApISO0dPAnDTQgt3JNQEbulOr/view"
+          target="_blank"
+          >RESUME</a
+        >
+      </div>
+    </header>
+    <div id="content" class="fade-container">
+      <div id="containerContact" class="main">
+        <form
+          id="form-contact"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+        >
+          <h3 id="title">GET IN TOUCH</h3>
+          <input
+            type="hidden"
+            name="access_key"
+            value="24d83ff5-67ad-4a9a-b206-6ee7dd2108c5"
+          />
+          <input
+            id="name"
+            type="text"
+            name="name"
+            placeholder="name"
+            class="contact-inputs"
+            required
+          />
+          <input
+            id="email"
+            type="email"
+            name="email"
+            placeholder="email"
+            class="contact-inputs"
+            required
+          />
+          <textarea
+            id="message"
+            name="message"
+            placeholder="how can I help you?"
+            class="contact-inputs"
+            required
+          ></textarea>
+          <button id="btSubmit" type="submit">SEND</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const transitionLinks = document.querySelectorAll(".transition-link");
+
+        transitionLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetUrl = e.currentTarget.href;
+            const content = document.getElementById("content");
+
+            content.classList.add("fade-out");
+
+            setTimeout(() => {
+              window.location.href = targetUrl;
+            }, 500); // Match the duration of the CSS transition
+          });
+        });
+
+        // Fade in effect when the page loads
+        window.addEventListener("pageshow", (event) => {
+          if (event.persisted) {
+            const content = document.getElementById("content");
+            content.classList.remove("fade-out");
+          }
+        });
+
+        const btSubmit = document.getElementById("btSubmit");
+
+        btSubmit.addEventListener("click", function () {
+          this.classList.add("button-clicked");
+          setTimeout(() => {
+            this.classList.remove("button-clicked");
+          }, 300); // Adjust this timeout to match the animation duration
+        });
+      });
+    </script>
+  </body>
+</html>

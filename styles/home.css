@@ -1,0 +1,70 @@
+header {
+  background-color: #d6e7e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+header p a {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  text-align: center;
+  letter-spacing: 8px;
+  color: #e1745f;
+  text-decoration: none;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#welcome {
+  margin: 20px;
+  font-size: 50px;
+  font-weight: 800;
+  color: #e1745f;
+}
+#presentation {
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+  line-height: 2;
+  font-size: 16px;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.linkText a {
+  background-color: #f5f0eb;
+  color: #e1745f;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 20px;
+  font-weight: 900;
+  text-decoration: none;
+  /* border-bottom: 4px solid; 
+  border-radius: 2px; 
+  padding-bottom: 2px;  */
+}
+.btHome {
+  border: 0;
+  background-color: #e1745f;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 20px;
+  font-weight: 900;
+  color: #f5f0eb;
+  text-decoration: none;
+  font-size: 20px;
+  margin: 20px;
+}
