@@ -11,7 +11,7 @@
   width: 70%;
   margin-left: auto; /* Center horizontally */
   margin-right: auto; /* Center horizontally */
-  @media (max-width: 767px) {
+  @media (max-width: 1000px) {
     grid-template-columns: 1fr; /* One card per row on smaller screens */
     width: 100%; /* Full width on smaller screens */
   }
@@ -51,7 +51,6 @@
   left: 40%;
   transform: translate(-50%, -50%);
   color: #fff;
-  font-size: 24px;
   opacity: 0; /* Initially invisible */
   transition: opacity 0.3s ease; /* Add transition for smoother animation */
 }
@@ -63,24 +62,22 @@
 .title {
   font-weight: 600;
   color: #fff;
-  font-size: 35px;
+  font-size: 30px;
 }
 
 .tags {
   font-weight: 300;
   color: #fff;
-  font-size: 24px;
+  font-size: 25px;
   margin-top: 20px;
 }
 
-@media (max-width: 768px){
+@media (max-width: 1000px){
   .tags {
-    font-size: 16px;
-  }
-
-  .cardTitle {
     font-size: 20px;
   }
+
+
 
   .title {
     font-size: 25px;
