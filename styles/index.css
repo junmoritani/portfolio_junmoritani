@@ -25,9 +25,19 @@ main {
   text-align: center;
 }
 #welcome {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
   margin: 20px;
-  font-size: 50px;
   font-weight: 800;
+}
+#welcome a {
+  font-size: 50px;
+  color: #e1745f;
+  text-decoration: none;
+}
+#welcome h1 {
+  font-size: 50px;
   color: #e1745f;
 }
 #presentation {
@@ -79,12 +89,20 @@ main {
   }
   
   #welcome {
+    justify-content: center;
+    align-items: center;
     margin: 20px;
     font-size: 30px;
     font-weight: 800;
     color: #e1745f;
   }
 
+  #welcome a {
+    font-size: 30px;
+  }
+  #welcome h1 {
+    font-size: 30px;
+  }
   #presentation {
     width: 80%;
     font-size: 14px;
