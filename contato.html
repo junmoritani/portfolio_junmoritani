@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="styles/header.css" />
     <link rel="stylesheet" href="styles/contato.css" />
     <script defer src="script/script.js"></script>
+    <script defer src="script/contato.js"></script>
   </head>
   <body id="swup" class="transition-fade">
     <header>
@@ -35,6 +36,7 @@
           id="form-contact"
           action="https://api.web3forms.com/submit"
           method="POST"
+          onsubmit="handleFormSubmit(event)"
         >
           <h3 id="title">GET IN TOUCH</h3>
           <input
@@ -68,42 +70,49 @@
           <button id="btSubmit" class="button" type="submit">SEND</button>
         </form>
       </div>
+      <div id="background-overlay" class="hidden"></div>
+      <div class="popup" id="popup">
+        <img src="img/tick.png" >
+        <h2>Thank You!</h2>
+        <p>I will respond you soon. Thanks!</p>
+        <button type="button" onclick="closePopup()">OK</button>
+      </div>
     </div>
     <script>
-      document.addEventListener("DOMContentLoaded", (event) => {
-        const transitionLinks = document.querySelectorAll(".transition-link");
+      // document.addEventListener("DOMContentLoaded", (event) => {
+      //   const transitionLinks = document.querySelectorAll(".transition-link");
 
-        transitionLinks.forEach((link) => {
-          link.addEventListener("click", (e) => {
-            e.preventDefault();
-            const targetUrl = e.currentTarget.href;
-            const content = document.getElementById("content");
+      //   transitionLinks.forEach((link) => {
+      //     link.addEventListener("click", (e) => {
+      //       e.preventDefault();
+      //       const targetUrl = e.currentTarget.href;
+      //       const content = document.getElementById("content");
 
-            content.classList.add("fade-out");
+      //       content.classList.add("fade-out");
 
-            setTimeout(() => {
-              window.location.href = targetUrl;
-            }, 500); // Match the duration of the CSS transition
-          });
-        });
+      //       setTimeout(() => {
+      //         window.location.href = targetUrl;
+      //       }, 500); // Match the duration of the CSS transition
+      //     });
+      //   });
 
-        // Fade in effect when the page loads
-        window.addEventListener("pageshow", (event) => {
-          if (event.persisted) {
-            const content = document.getElementById("content");
-            content.classList.remove("fade-out");
-          }
-        });
+      //   // Fade in effect when the page loads
+      //   window.addEventListener("pageshow", (event) => {
+      //     if (event.persisted) {
+      //       const content = document.getElementById("content");
+      //       content.classList.remove("fade-out");
+      //     }
+      //   });
 
-        const btSubmit = document.getElementById("btSubmit");
+      //   const btSubmit = document.getElementById("btSubmit");
 
-        btSubmit.addEventListener("click", function () {
-          this.classList.add("button-clicked");
-          setTimeout(() => {
-            this.classList.remove("button-clicked");
-          }, 300); // Adjust this timeout to match the animation duration
-        });
-      });
+      //   btSubmit.addEventListener("click", function () {
+      //     this.classList.add("button-clicked");
+      //     setTimeout(() => {
+      //       this.classList.remove("button-clicked");
+      //     }, 300); // Adjust this timeout to match the animation duration
+      //   });
+      // });
     </script>
   </body>
 </html>
