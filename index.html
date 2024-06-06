@@ -16,6 +16,7 @@
       rel="stylesheet"
     />
     <script defer src="script/script.js"></script>
+    <script defer src="script/index.js"></script>
     <link rel="stylesheet" href="styles/index.css" />
     <link rel="stylesheet" href="styles/standard.css" />
   </head>
@@ -25,39 +26,48 @@
         <a class="transition-link" href="index.html">GUSTAVO JUN MORITANI</a>
       </p>
     </header>
-    <main id="content" class="main fade-container">
+    <main class="main fade-container">
       <div id="content">
         <div id="welcome">
-          <!-- <h1 id="welcome">Bem-vindo | Welcome</h1> -->
-          <a href="#">Bem-vindo</a><h1>|</h1><a href="index.html"> Welcome</a>
+          <button id="welcome-portuguese" class="btWelcome">Bem-vindo</button>
+          <h1>|</h1>
+          <button id="welcome-english" class="btWelcome">Welcome</button>
         </div>
-        <p id="presentation">
-          Hello! I'm Gustavo Jun, a Brazilian interface developer with a
-          background in architecture and urban planning, seeking new work
-          experiences. <br /><br />Check out my portfolio for a glimpse of
-          <span class="linkText button"
-            ><a class="transition-link button" href="projects.html">MY PROJECTS</a> </span
-          >, blending academic and professional pursuits. My focus is on
-          creating interactive interfaces in both digital and physical
-          environments. I'm passionate about using technology to enhance
-          interactions and foster richer dialogues between people.
-          <br /><br />Feel free to
-          <span class="linkText"
-            ><a class="transition-link" href="contato.html">REACH OUT</a></span
-          >
-          for potential collaborations.
-        </p>
-        <br />
-        <div>
-          <a
-            href="https://drive.google.com/file/d/1i4hoCdiApISO0dPAnDTQgt3JNQEbulOr/view"
-            target="_blank"
-          >
-            <button class="btHome button">MY RESUME</button></a
-          >
-          <a class="transition-link" href="projects.html"
-            ><button class="btHome button">MY PROJECTS</button></a
-          >
+        <div id="main-content">
+          <p id="presentation">
+            Hello! I'm Gustavo Jun, a Brazilian interface developer with a
+            background in architecture and urban planning, seeking new work
+            experiences. <br /><br />Check out my portfolio for a glimpse of
+            <span class="linkText button"
+              ><a class="transition-link button" href="projects.html"
+                >MY PROJECTS</a
+              > </span
+            >, blending academic and professional pursuits. My focus is on
+            creating interactive interfaces in both digital and physical
+            environments. I'm passionate about using technology to enhance
+            interactions and foster richer dialogues between people.
+            <br /><br />Feel free to
+            <span class="linkText"
+              ><a class="transition-link" href="contato.html"
+                >REACH OUT</a
+              ></span
+            >
+            for potential collaborations.
+          </p>
+          <br />
+          <div>
+            <a
+              href="https://drive.google.com/file/d/1i4hoCdiApISO0dPAnDTQgt3JNQEbulOr/view"
+              target="_blank"
+            >
+              <button id="btResume" class="btHome button">MY RESUME</button></a
+            >
+            <a class="transition-link" href="projects.html"
+              ><button id="btProjects" class="btHome button">
+                MY PROJECTS
+              </button></a
+            >
+          </div>
         </div>
       </div>
     </main>

@@ -27,15 +27,18 @@ main {
 #welcome {
   display: flex;
   flex-direction: row;
+  /* flex-wrap: wrap; */
   gap: 10px;
   margin: 20px;
   font-weight: 800;
 }
-#welcome a {
+#welcome button {
   font-size: 50px;
-  color: #e1745f;
+  font-weight: 800;
   text-decoration: none;
+  border: 0px;
 }
+
 #welcome h1 {
   font-size: 50px;
   color: #e1745f;
@@ -46,8 +49,34 @@ main {
   align-items: center;
   line-height: 2;
   font-size: 16px;
+  opacity: 1;
+}
+#main-content.fade-out {
+  opacity: 0;
+}
+.btWelcome {
+  color: #ecb4a9;
+  background-color: transparent;
+  /* color: #e1745f;
+  background-color: #d6e7e6; */
+  border-radius: 20px;
+  padding: 0px 20px;
+  z-index: 1;
 }
 
+.selected {
+  color: #e1745f;
+  background-color: #d6e7e6;
+  /* color: #ecb4a9;
+  background-color: transparent; */
+}
+#main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
 #content {
   display: flex;
   flex-direction: column;
@@ -81,13 +110,13 @@ main {
   cursor: pointer;
 }
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
   header p a {
     font-size: 20px;
     text-align: center;
-    display:flex;
+    display: flex;
   }
-  
+
   #welcome {
     justify-content: center;
     align-items: center;
@@ -97,7 +126,7 @@ main {
     color: #e1745f;
   }
 
-  #welcome a {
+  #welcome button {
     font-size: 30px;
   }
   #welcome h1 {
@@ -105,6 +134,6 @@ main {
   }
   #presentation {
     width: 80%;
-    font-size: 14px;
+    font-size: 16px;
   }
 }
