@@ -14,13 +14,16 @@
     <link rel="stylesheet" href="styles/header.css" />
     <link rel="stylesheet" href="styles/contato.css" />
     <script defer src="script/script.js"></script>
+    <script defer src="script/header.js"></script>
     <script defer src="script/contato.js"></script>
   </head>
   <body id="swup" class="transition-fade">
     <header>
       <p><a class="transition-link" href="index.html">GUSTAVO JUN</a></p>
       <div id="navBar">
-        <a class="transition-link" id="projects" href="projects.html">PROJECTS</a>
+        <a class="transition-link" id="projects" href="projects.html"
+          >PROJECTS</a
+        >
         <a class="transition-link" id="contact" href="contato.html">CONTACT</a>
         <a
           id="resume"
@@ -69,16 +72,19 @@
           ></textarea>
           <button id="btSubmit" class="button" type="submit">SEND</button>
         </form>
-        <br>
-        <br>
-        <div class="sendEmail"><p> or send an email to</p><h4>gustavojunmoritani@gmail.com</h4> </div>
+        <br />
+        <br />
+        <div class="sendEmail">
+          <p id="msgInfo">or send an email to</p>
+          <h4>gustavojunmoritani@gmail.com</h4>
+        </div>
       </div>
-      
+
       <div id="background-overlay" class="hidden"></div>
       <div class="popup" id="popup">
-        <img src="img/tick.png" >
-        <h2>Thank You!</h2>
-        <p>I will respond you soon. Thanks!</p>
+        <img src="img/tick.png" />
+        <h2 id="msgThankYou">Thank You!</h2>
+        <p id="msgRespond">I will respond you soon. Thanks!</p>
         <button type="button" onclick="closePopup()">OK</button>
       </div>
     </div>
