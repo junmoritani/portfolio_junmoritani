@@ -13,6 +13,8 @@ let data = {
     for potential collaborations.`,
     resume: "MY RESUME",
     projects: "MY PROJECTS",
+    resumeLink:
+      "https://drive.google.com/file/d/1i4hoCdiApISO0dPAnDTQgt3JNQEbulOr/view",
   },
   portuguese: {
     presentation: `Olá! Sou Gustavo Jun, um desenvolvedor de interface com
@@ -28,6 +30,8 @@ let data = {
     para possíveis colaborações.`,
     resume: "MEU CURRÍCULO",
     projects: "MEUS PROJETOS",
+    resumeLink:
+      "https://drive.google.com/file/d/1tHo0kqhXiEm3Hh5AZbUpR4S1chOZVff-/view",
   },
 };
 
@@ -40,6 +44,7 @@ function updateContent(language) {
   const btProjects = document.getElementById("btProjects");
   const welcomePortuguese = document.getElementById("welcome-portuguese");
   const welcomeEnglish = document.getElementById("welcome-english");
+  const linkResume = document.getElementById("linkResume");
   contentDiv.classList.add("fade-out");
 
   welcomePortuguese.classList.remove("selected");
@@ -51,7 +56,9 @@ function updateContent(language) {
     const presentation = data[language].presentation;
     const resume = data[language].resume;
     const projects = data[language].projects;
+    const dataResumeLink = data[language].resumeLink;
     btResume.innerHTML = resume;
+    linkResume.href = dataResumeLink;
     btProjects.innerHTML = projects;
     DivPresentation.innerHTML = presentation;
     contentDiv.classList.remove("fade-out");
