@@ -19,6 +19,7 @@
     <script defer src="script/index.js"></script>
     <link rel="stylesheet" href="styles/index.css" />
     <link rel="stylesheet" href="styles/standard.css" />
+    <link rel="stylesheet" href="styles/toggleSwitch.css" />
   </head>
   <body id="swup" class="transition-fade">
     <header>
@@ -28,11 +29,17 @@
     </header>
     <main class="main fade-container">
       <div id="content">
-        <div id="welcome">
+        <!-- <div id="welcome">
           <button id="welcome-portuguese" class="btWelcome">Bem-vindo</button>
           <h1>|</h1>
           <button id="welcome-english" class="btWelcome">Welcome</button>
-        </div>
+        </div> -->
+
+        <span class="switch">
+          <input type="checkbox" id="switcher" />
+          <label for="switcher"></label>
+        </span>
+
         <div id="main-content">
           <p id="presentation">
             <!-- Hello! I'm Gustavo Jun, a Brazilian interface developer with a
@@ -55,7 +62,7 @@
             for potential collaborations. -->
           </p>
           <br />
-          <div>
+          <div id="buttonsIndex">
             <a id="linkResume" href="" target="_blank">
               <button id="btResume" class="btHome button"></button
             ></a>

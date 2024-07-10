@@ -47,9 +47,6 @@ function updateContent(language) {
   const linkResume = document.getElementById("linkResume");
   contentDiv.classList.add("fade-out");
 
-  welcomePortuguese.classList.remove("selected");
-  welcomeEnglish.classList.remove("selected");
-
   // Wait for the fade-out transition to complete
   setTimeout(() => {
     // const content = data[language].presentation;
@@ -62,12 +59,6 @@ function updateContent(language) {
     btProjects.innerHTML = projects;
     DivPresentation.innerHTML = presentation;
     contentDiv.classList.remove("fade-out");
-
-    if (language === "english") {
-      welcomeEnglish.classList.add("selected");
-    } else {
-      welcomePortuguese.classList.add("selected");
-    }
   }, 500); // Duration of the transition should match the CSS transition duration
 }
 
@@ -77,13 +68,13 @@ function loadLanguagePreference() {
   updateContent(selectedLanguage);
 }
 
-// Event listeners for the language switch links
-document.getElementById("welcome-portuguese").addEventListener("click", () => {
-  updateContent("portuguese");
-});
-
-document.getElementById("welcome-english").addEventListener("click", () => {
-  updateContent("english");
+document.getElementById("switcher").addEventListener("change", function () {
+  const textElement = document.getElementById("toggle-text");
+  if (this.checked) {
+    updateContent("portuguese");
+  } else {
+    updateContent("english");
+  }
 });
 
 // Initialize the default language
