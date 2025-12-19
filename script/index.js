@@ -25,44 +25,28 @@ const data = {
   },
 };
 
+// Função para atualizar os elementos (usada no load inicial e no clique)
+function applyTexts(langData) {
+  document.getElementById("text-intro").innerHTML = langData.intro;
+  document.getElementById("text-bio").innerHTML = langData.bio;
+  document.getElementById("text-cta-projects").innerHTML = langData.ctaProjects;
+  document.getElementById("btn-projects").innerHTML = langData.btnProjects;
+  document.getElementById("text-cta-resume").innerHTML = langData.ctaResume;
+  document.getElementById("link-resume").innerHTML = langData.linkResumeLabel;
+  document.getElementById("link-resume").href = langData.resumeLink;
+  document.getElementById("text-cta-contact").innerHTML = langData.ctaContact;
+  document.getElementById("btn-contact").innerHTML = langData.btnContact;
+}
+
 function updateContent(language) {
   localStorage.setItem("selectedLanguage", language);
-  const langData = data[language]; // Simplifica o acesso aos dados
-
-  // Elementos do DOM
+  const langData = data[language];
   const contentDiv = document.getElementById("main-content");
 
-  const elIntro = document.getElementById("text-intro");
-  const elBio = document.getElementById("text-bio");
-
-  const elCtaProjects = document.getElementById("text-cta-projects");
-  const elBtnProjects = document.getElementById("btn-projects");
-
-  const elCtaResume = document.getElementById("text-cta-resume");
-  const elLinkResume = document.getElementById("link-resume");
-
-  const elCtaContact = document.getElementById("text-cta-contact");
-  const elBtnContact = document.getElementById("btn-contact");
-
-  // Inicia animação de saída
   contentDiv.classList.add("fade-out");
 
   setTimeout(() => {
-    // Atualiza Textos
-    elIntro.innerHTML = langData.intro;
-    elBio.innerHTML = langData.bio;
-
-    elCtaProjects.innerHTML = langData.ctaProjects;
-    elBtnProjects.innerHTML = langData.btnProjects;
-
-    elCtaResume.innerHTML = langData.ctaResume;
-    elLinkResume.innerHTML = langData.linkResumeLabel;
-    elLinkResume.href = langData.resumeLink; // Atualiza o link do PDF
-
-    elCtaContact.innerHTML = langData.ctaContact;
-    elBtnContact.innerHTML = langData.btnContact;
-
-    // Remove animação de saída (fade in)
+    applyTexts(langData);
     contentDiv.classList.remove("fade-out");
   }, 500);
 }
@@ -72,22 +56,25 @@ function loadLanguagePreference() {
     localStorage.getItem("selectedLanguage") || "english";
   const switcher = document.getElementById("switcher");
 
-  // Sincroniza o botão switch com o localStorage
-  if (selectedLanguage === "portuguese") {
-    switcher.checked = true;
-  } else {
-    switcher.checked = false;
+  if (switcher) {
+    // Sincroniza o switch
+    switcher.checked = selectedLanguage === "portuguese";
+
+    // Adiciona o ouvinte de evento aqui dentro, garantindo que o elemento existe
+    switcher.addEventListener("change", function () {
+      updateContent(this.checked ? "portuguese" : "english");
+    });
   }
 
-  updateContent(selectedLanguage);
+  // Aplica os textos imediatamente sem animação
+  applyTexts(data[selectedLanguage]);
 }
 
-document.getElementById("switcher").addEventListener("change", function () {
-  if (this.checked) {
-    updateContent("portuguese");
-  } else {
-    updateContent("english");
-  }
-});
+// Única chamada necessária para iniciar tudo
+document.addEventListener("DOMContentLoaded", loadLanguagePreference);
 
-window.onload = loadLanguagePreference;
+if (typeof swup !== "undefined") {
+  swup.hooks.on("page:view", () => {
+    loadLanguagePreference();
+  });
+}
