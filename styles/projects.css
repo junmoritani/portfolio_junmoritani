@@ -30,7 +30,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9); /* Translucent black background */
+  background-color: rgba(35, 42, 53, 0.9); /* Translucent black background */
   opacity: 0; /* Initially invisible */
   transition: opacity 0.3s ease; /* Add transition for smoother animation */
 }
@@ -72,12 +72,10 @@
   margin-top: 20px;
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1000px) {
   .tags {
     font-size: 20px;
   }
-
-
 
   .title {
     font-size: 25px;

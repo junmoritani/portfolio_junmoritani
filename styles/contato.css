@@ -32,11 +32,11 @@ main {
   font-size: 30px;
   text-align: center;
   letter-spacing: 4px;
-  color: #e1745f;
+  color: #334155;
 }
 
 .contact-inputs {
-  background-color: #fcfbf9;
+  background-color: #f1f1ee;
 }
 
 #name,
@@ -47,6 +47,7 @@ main {
   box-shadow: inset 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
   text-indent: 15px;
   font-size: 18px;
+  font-weight: 300;
 }
 
 #message {
@@ -57,23 +58,24 @@ main {
   box-shadow: inset 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
   text-indent: 10px;
   font-size: 18px;
+  font-weight: 300;
 }
 
 #name::placeholder,
 #email::placeholder {
-  color: #e1745f;
+  color: #334155;
   text-indent: 15px;
   font-size: 18px;
 }
 
 #message::placeholder {
-  color: #e1745f;
+  color: #334155;
   text-indent: 10px;
   font-size: 18px;
 }
 
 #btSubmit {
-  background-color: #e1745f;
+  background-color: #334155;
   color: #fcfbf9;
   border-width: 0px;
   padding: 10px;
@@ -97,7 +99,7 @@ main {
 }
 
 #btSubmit {
-  background-color: #e1745f;
+  background-color: #334155;
   color: #fcfbf9;
   border-width: 0px;
   padding: 10px;
@@ -108,11 +110,9 @@ main {
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-
 .button-clicked {
   animation: buttonClick 0.3s ease;
 }
-
 
 .hidden {
   display: none;
@@ -128,41 +128,40 @@ main {
   z-index: 99;
 }
 .popup {
-width: 400px;
-background-color: #fcfbf9;
-border-radius: 6px;
-position: absolute;
-top:0;
-left: 50%;
-transform: translate(-50%, -50%) scale(0.1);
-text-align: center;
-padding: 0 30px 30px ;
-visibility: hidden;
-transition: transform 0.4s,top 0.4s;
-z-index: 100;
+  width: 400px;
+  background-color: #fcfbf9;
+  border-radius: 6px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  visibility: hidden;
+  transition: transform 0.4s, top 0.4s;
+  z-index: 100;
 }
 
-.open-popup{
+.open-popup {
   visibility: visible;
   top: 50%;
   transform: translate(-50%, -50%) scale(1);
 }
 
-
-.popup img{
+.popup img {
   width: 100px;
   margin-top: -50px;
   border-radius: 50%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.popup h2{
+.popup h2 {
   font-size: 38px;
   font-weight: 500px;
   margin: 30px 0 10px;
 }
 
-.popup button{
+.popup button {
   width: 100%;
   margin-top: 50px;
   padding: 10px 0;
@@ -176,14 +175,13 @@ z-index: 100;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }
 
-.sendEmail{
+.sendEmail {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-@media (max-width: 768px){
-
+@media (max-width: 768px) {
   #form-contact {
     width: 95%;
     display: flex;

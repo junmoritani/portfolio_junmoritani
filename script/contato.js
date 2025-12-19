@@ -39,9 +39,9 @@ async function handleFormSubmit(event) {
 let dataContact = {
   english: {
     title: "GET IN TOUCH",
-    name: "name",
-    email: "email",
-    message: "how can I help you?",
+    name: "Name",
+    email: "Email",
+    message: "How can I help you?",
     send: "SEND",
     msgInfo: "or send an email to",
     msgThankYou: "Thank You!",
@@ -49,9 +49,9 @@ let dataContact = {
   },
   portuguese: {
     title: "ENTRE EM CONTATO",
-    name: "nome",
-    email: "email",
-    message: "como posso te ajudar?",
+    name: "Nome",
+    email: "Email",
+    message: "Como posso te ajudar?",
     send: "ENVIAR",
     msgInfo: "ou mande um email para",
     msgThankYou: "Obrigado!",

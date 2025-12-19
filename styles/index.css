@@ -1,11 +1,11 @@
 header {
-  background-color: #d6e7e6;
+  /* background-color: #d6e7e6; */
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); */
 }
 
 header p a {
@@ -14,7 +14,7 @@ header p a {
   font-size: 30px;
   text-align: center;
   letter-spacing: 8px;
-  color: #e1745f;
+  color: #c29b48;
   text-decoration: none;
 }
 
@@ -25,6 +25,62 @@ main {
   text-align: center;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed; /* Fixas para não sumirem no scroll */
+  width: 2500px;
+  height: 1500px;
+  border-radius: 50%;
+  z-index: -1; /* Fica atrás do conteúdo */
+  filter: blur(20px); /* Suaviza as bordas */
+  opacity: 0.7;
+  pointer-events: none; /* Não interfere nos cliques */
+  background: radial-gradient(circle, #f0e1a1 0%, rgba(240, 225, 161, 0) 50%);
+}
+
+/* Posição inicial da primeira bola (topo direita) */
+body::before {
+  top: -600px;
+  right: -1400px;
+  animation: moveTop 12s ease-in-out infinite alternate;
+}
+
+/* Posição inicial da segunda bola (baixo esquerda) */
+body::after {
+  bottom: -600px;
+  left: -1400px;
+  animation: moveBottom 10s ease-in-out infinite alternate;
+}
+
+/* Animação para a bola de cima */
+@keyframes moveTop {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(-15vw, 10vh) scale(1.2);
+  }
+}
+
+/* Animação para a bola de baixo */
+@keyframes moveBottom {
+  0% {
+    transform: translate(0, 0) scale(1.1);
+  }
+  100% {
+    transform: translate(20vw, -15vh) scale(1);
+  }
+}
 /* #welcome {
   display: flex;
   flex-direction: row;
@@ -54,6 +110,45 @@ main {
 #main-content.fade-out {
   opacity: 0;
 }
+#main-content {
+  margin-top: 20px;
+  max-width: 600px;
+  min-height: 600px;
+}
+
+.profile-header {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+
+  align-items: center;
+  gap: 20px;
+}
+
+#text-intro {
+  font-weight: 700;
+  font-size: 48px;
+}
+
+#text-bio {
+  text-align: left;
+  margin-left: 25%;
+  margin-top: 15px;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.cta-section {
+  width: 100%;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 20px;
+  font-weight: 300;
+  font-size: large;
+}
+
 /* .btWelcome {
   color: #ecb4a9;
   background-color: transparent;
@@ -61,6 +156,9 @@ main {
   padding: 0px 20px;
   z-index: 1;
 }
+
+
+
 
 .selected {
   color: #e1745f;
@@ -81,8 +179,8 @@ main {
   text-align: center;
 }
 .linkText a {
-  background-color: #f5f0eb;
-  color: #e1745f;
+  /* background-color: #f5f0eb; */
+  color: #334155;
   /* box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
   padding: 10px;
   border-radius: 20px; */
@@ -92,9 +190,14 @@ main {
   border-radius: 2px; 
   padding-bottom: 2px;  */
 }
+
+.resume-link {
+  font-weight: 900;
+  text-decoration: none;
+}
 .btHome {
   border: 0;
-  background-color: #e1745f;
+  background-color: #334155;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   padding: 10px;
   border-radius: 20px;
@@ -111,6 +214,22 @@ main {
     font-size: 20px;
     text-align: center;
     display: flex;
+  }
+  #main-content {
+    width: 80%;
+  }
+  .profile-header {
+    flex-direction: column;
+  }
+  #text-intro {
+    font-size: 30px;
+  }
+  #text-bio {
+    text-align: center;
+    margin-left: 0;
+    margin-top: 15px;
+    font-weight: 300;
+    font-size: 18px;
   }
   #buttonsIndex {
     display: flex;

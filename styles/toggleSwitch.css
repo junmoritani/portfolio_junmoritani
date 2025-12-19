@@ -1,7 +1,7 @@
 .switch {
   position: relative;
   width: 600px;
-  height: 80px;
+  height: 60px;
   border-radius: 25px;
   margin: 50px;
 }
@@ -9,10 +9,12 @@
 .switch input {
   appearance: none;
   width: 600px;
-  height: 80px;
+  height: 60px;
   border-radius: 40px;
+  font-family: "Inter", sans-serif;
   font-size: 40px;
-  background-color: #efe4d9;
+  font-weight: 200;
+  background-color: #fafaf9;
   box-shadow: inset -2px -2px 5px rgba(110, 100, 93, 0.5);
   outline: none;
 }
@@ -23,7 +25,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-weight: bolder;
+  /* font-weight: bolder; */
 }
 
 .switch input::before {
@@ -49,41 +51,41 @@
 }
 
 .switch input:checked::before {
-  color: #efe4d9;
+  color: #fafaf9;
   transition: color 0.5s;
 }
 
 .switch input:checked::after {
-  color: #e1745f;
+  color: #334155;
   transition: color 0.5s;
 }
 
 .switch input:checked + label {
   left: 10px;
   right: 310px;
-  background-color: #e1745f;
+  background-color: #334155;
   transition: left 0.5s, right 0.4s 0.2s;
 }
 
 .switch input:not(:checked) {
-  background: #efe4d9;
+  background: #fafaf9;
   transition: background 0.4s;
 }
 
 .switch input:not(:checked)::before {
-  color: #e1745f;
+  color: #334155;
   transition: color 0.5s;
 }
 
 .switch input:not(:checked)::after {
-  color: #efe4d9;
+  color: #fafaf9;
   transition: color 0.5s;
 }
 
 .switch input:not(:checked) + label {
   left: 350px;
   right: 10px;
-  background-color: #e1745f;
+  background-color: #334155;
   transition: left 0.4s 0.2s, right 0.5s, background 0.35s;
 }
 

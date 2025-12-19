@@ -2,11 +2,11 @@
   margin: 0px;
   font-family: "Inter", sans-serif;
 
-  color: #453d30;
+  color: #334155;
 }
 
 body {
-  background-color: #f5f0eb;
+  background-color: #fafaf9;
 }
 
 @keyframes transitionIn {
@@ -33,7 +33,7 @@ body {
   opacity: 0;
 }
 
-.button{
+.button {
   transition: transform 0.3s ease;
 }
 .button:hover {

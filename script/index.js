@@ -1,35 +1,25 @@
-let data = {
+const data = {
   english: {
-    presentation: `Hello! I'm Gustavo Jun, a Brazilian interface developer with a
-    background in architecture and urban planning, seeking new work
-    experiences. <br /><br />Check out my portfolio for a glimpse of
-    <span class="linkText button"><a class="transition-link button" href="projects.html">MY PROJECTS</a> </span>,
-    blending academic and professional pursuits. My focus is on
-    creating interactive interfaces in both digital and physical
-    environments. I'm passionate about using technology to enhance
-    interactions and foster richer dialogues between people.
-    <br /><br />Feel free to
-    <span class="linkText"><a class="transition-link" href="contato.html">REACH OUT</a></span>
-    for potential collaborations.`,
-    resume: "MY RESUME",
-    projects: "MY PROJECTS",
+    intro: "I'm Gustavo Jun,",
+    bio: "A Brazilian UX Designer with a background in architecture and urban planning. <br/>I'm passionate about exploring physical and digital tools to create intuitive interfaces and foster meaningful user interactions.",
+    ctaProjects: "Take a look at what I've been building in",
+    btnProjects: "MY PROJECTS",
+    ctaResume: "Curious about my story? Read my full",
+    linkResumeLabel: "RESUME",
+    ctaContact: "Have an idea in mind? I’d love to hear from you.",
+    btnContact: "REACH OUT",
     resumeLink:
       "https://drive.google.com/file/d/1i4hoCdiApISO0dPAnDTQgt3JNQEbulOr/view",
   },
   portuguese: {
-    presentation: `Olá! Sou Gustavo Jun, um desenvolvedor de interface com
-    formado em arquitetura e urbanismo, buscando novas experiências de
-    trabalho. <br /><br />Confira meu portfólio para ter um vislumbre dos
-    <span class="linkText button"><a class="transition-link button" href="projects.html">MEUS PROJETOS</a> </span>,
-    mesclando atividades acadêmicas e profissionais. Meu foco é na
-    criação de interfaces interativas em ambientes digitais e/ou físicos.
-    Sou apaixonado por usar a tecnologia para melhorar as interações e
-    promover diálogos mais ricos entre as pessoas.
-    <br /><br />Sinta-se à vontade para
-    <span class="linkText"><a class="transition-link" href="contato.html">ENTRAR EM CONTATO</a></span>
-    para possíveis colaborações.`,
-    resume: "MEU CURRÍCULO",
-    projects: "MEUS PROJETOS",
+    intro: "Sou Gustavo Jun,",
+    bio: "Um UX Designer brasileiro com formação em arquitetura e urbanismo.<br/>Sou apaixonado por explorar ferramentas físicas e digitais para criar interfaces intuitivas e promover interações significativas.",
+    ctaProjects: "Dê uma olhada no que venho construindo em",
+    btnProjects: "MEUS PROJETOS",
+    ctaResume: "Curioso sobre minha história? Leia meu",
+    linkResumeLabel: "CURRÍCULO",
+    ctaContact: "Tem uma ideia em mente? Adoraria ouvir de você.",
+    btnContact: "CONTATO",
     resumeLink:
       "https://drive.google.com/file/d/1tHo0kqhXiEm3Hh5AZbUpR4S1chOZVff-/view",
   },
@@ -37,39 +27,62 @@ let data = {
 
 function updateContent(language) {
   localStorage.setItem("selectedLanguage", language);
+  const langData = data[language]; // Simplifica o acesso aos dados
 
+  // Elementos do DOM
   const contentDiv = document.getElementById("main-content");
-  const DivPresentation = document.getElementById("presentation");
-  const btResume = document.getElementById("btResume");
-  const btProjects = document.getElementById("btProjects");
-  const welcomePortuguese = document.getElementById("welcome-portuguese");
-  const welcomeEnglish = document.getElementById("welcome-english");
-  const linkResume = document.getElementById("linkResume");
+
+  const elIntro = document.getElementById("text-intro");
+  const elBio = document.getElementById("text-bio");
+
+  const elCtaProjects = document.getElementById("text-cta-projects");
+  const elBtnProjects = document.getElementById("btn-projects");
+
+  const elCtaResume = document.getElementById("text-cta-resume");
+  const elLinkResume = document.getElementById("link-resume");
+
+  const elCtaContact = document.getElementById("text-cta-contact");
+  const elBtnContact = document.getElementById("btn-contact");
+
+  // Inicia animação de saída
   contentDiv.classList.add("fade-out");
 
-  // Wait for the fade-out transition to complete
   setTimeout(() => {
-    // const content = data[language].presentation;
-    const presentation = data[language].presentation;
-    const resume = data[language].resume;
-    const projects = data[language].projects;
-    const dataResumeLink = data[language].resumeLink;
-    btResume.innerHTML = resume;
-    linkResume.href = dataResumeLink;
-    btProjects.innerHTML = projects;
-    DivPresentation.innerHTML = presentation;
+    // Atualiza Textos
+    elIntro.innerHTML = langData.intro;
+    elBio.innerHTML = langData.bio;
+
+    elCtaProjects.innerHTML = langData.ctaProjects;
+    elBtnProjects.innerHTML = langData.btnProjects;
+
+    elCtaResume.innerHTML = langData.ctaResume;
+    elLinkResume.innerHTML = langData.linkResumeLabel;
+    elLinkResume.href = langData.resumeLink; // Atualiza o link do PDF
+
+    elCtaContact.innerHTML = langData.ctaContact;
+    elBtnContact.innerHTML = langData.btnContact;
+
+    // Remove animação de saída (fade in)
     contentDiv.classList.remove("fade-out");
-  }, 500); // Duration of the transition should match the CSS transition duration
+  }, 500);
 }
 
 function loadLanguagePreference() {
   const selectedLanguage =
-    localStorage.getItem("selectedLanguage") || "english"; // Default to English if not set
+    localStorage.getItem("selectedLanguage") || "english";
+  const switcher = document.getElementById("switcher");
+
+  // Sincroniza o botão switch com o localStorage
+  if (selectedLanguage === "portuguese") {
+    switcher.checked = true;
+  } else {
+    switcher.checked = false;
+  }
+
   updateContent(selectedLanguage);
 }
 
 document.getElementById("switcher").addEventListener("change", function () {
-  const textElement = document.getElementById("toggle-text");
   if (this.checked) {
     updateContent("portuguese");
   } else {
@@ -77,6 +90,4 @@ document.getElementById("switcher").addEventListener("change", function () {
   }
 });
 
-// Initialize the default language
-// updateContent("english");
 window.onload = loadLanguagePreference;

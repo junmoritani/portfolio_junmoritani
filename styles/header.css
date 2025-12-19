@@ -1,10 +1,9 @@
 header {
-  background-color: #d6e7e6;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   height: 100px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  padding-top: 30px;
   padding-left: 50px;
   padding-right: 50px;
 }
@@ -14,14 +13,21 @@ header p a {
   font-weight: 800;
   font-size: 30px;
   text-align: center;
-  letter-spacing: 8px;
-  color: #e1745f;
+  letter-spacing: 3px;
+  color: #334155;
   text-decoration: none;
 }
 
-#navBar{
+#logo-header {
+  display: flex;
+  gap: 20px;
+  align-items: baseline;
+}
+
+#navBar {
   display: flex;
   flex-direction: row;
+  align-items: baseline;
 }
 
 #navBar a {
@@ -30,7 +36,7 @@ header p a {
   font-weight: 500;
   text-align: center;
   letter-spacing: 8px;
-  color: #e1745f;
+  color: #334155;
   text-decoration: none;
   margin-left: 10px;
   margin-right: 10px;
@@ -56,23 +62,24 @@ header p a {
   transition: 0.3s;
 }
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
   header {
     padding-left: 10px;
     padding-right: 10px;
+    align-items: center;
   }
-
+  #img-header {
+    display: none;
+  }
   header p a {
     line-height: 40px;
     font-size: 25px;
   }
 
-  #navBar{
+  #navBar {
     gap: 4px;
     display: flex;
     flex-direction: column;
     align-items: end;
   }
- 
-  
 }
