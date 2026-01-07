@@ -35,14 +35,11 @@
   padding: 50px 0;
 }
 
-
 img {
   width: 100%;
 }
 
-@media (max-width: 768px){
-  
-
+@media (max-width: 768px) {
   #title {
     width: 90%;
     text-align: center;
@@ -54,4 +51,29 @@ img {
   #title-main h1 {
     font-size: 35px;
   }
+}
+
+/* Classe criada dinamicamente pelo JS para envolver o vídeo */
+.dynamic-video-container {
+  position: relative;
+  width: 100%;
+  /* Esse padding-bottom mágico cria a proporção 16:9 (HD) */
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  background-color: #000; /* Fundo preto enquanto carrega */
+}
+
+.dynamic-video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Garante que as imagens não tenham espaço extra entre elas */
+#projectPages img {
+  display: block;
+  width: 100%;
 }

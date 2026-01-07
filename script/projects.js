@@ -9,16 +9,19 @@ const dataProjects = {
       Year: "2023",
       ImgUrl: "img/Lacos/en",
       PageNumbers: 21,
+
       Obs: "this was a group project and everyone participated in all tasks of the process",
     },
     {
-      Title: "An interface for the real estate market",
-      Tags: "UX research | UI design | Unreal Engine Development",
+      Title: "Immersive Real Estate UX",
+      Tags: "UX & Product Design | Unreal Engine Development",
       ImgLink: "img/covers/Sensia.png",
       ProjectLink: "./projectDetails.html?lang=english&index=1",
-      Year: "2022",
+      Year: "",
       ImgUrl: "img/Sensia/en",
-      PageNumbers: 11,
+      PageNumbers: 13,
+      // VideoSrc: "https://www.youtube.com/watch?v=aHfw6IjgFaM",
+      // VideoAfterPage: 3,
       Obs: "",
     },
     // {
@@ -32,13 +35,13 @@ const dataProjects = {
     //   Obs: "",
     // },
     {
-      Title: "An interface for the real estate market",
-      Tags: "UX research | UI design | Unreal Engine Development",
-      ImgLink: "img/covers/SeteSois.png",
+      Title: "A Touchscreen Real State UX ",
+      Tags: "UX & Product Design | Unreal Engine Development",
+      ImgLink: "img/covers/Premier.png",
       ProjectLink: "./projectDetails.html?lang=english&index=2",
       Year: "2023",
-      ImgUrl: "img/SeteSois/en",
-      PageNumbers: 12,
+      ImgUrl: "img/Premier/en",
+      PageNumbers: 10,
       Obs: "",
     },
     // {
@@ -75,13 +78,15 @@ const dataProjects = {
       Obs: "esse foi um projeto em grupo e todos participaram de todas as etapas do projeto",
     },
     {
-      Title: "Uma interface para o mercado imobiliário",
-      Tags: "UX research | UI design | Desenvolvimento Unreal Engine",
+      Title: "UX Imersiva para Empreendimentos Imobiliários",
+      Tags: "UX & Product Design | Desenvolvimento Unreal Engine",
       ImgLink: "img/covers/Sensia.png",
       ProjectLink: "./projectDetails.html?lang=portuguese&index=1",
-      Year: "2022",
+      Year: "",
       ImgUrl: "img/Sensia/pt",
-      PageNumbers: 11,
+      PageNumbers: 13,
+      // VideoSrc: "https://www.youtube.com/watch?v=aHfw6IjgFaM",
+      // VideoAfterPage: 3,
       Obs: "",
     },
     // {
@@ -96,11 +101,11 @@ const dataProjects = {
     // },
     {
       Title: "Uma interface para o mercado imobiliário",
-      Tags: "UX research | UI design | Desenvolvimento Unreal Engine",
-      ImgLink: "img/covers/SeteSois.png",
+      Tags: "UX & Product Design | Desenvolvimento Unreal Engine",
+      ImgLink: "img/covers/Premier.png",
       ProjectLink: "./projectDetails.html?lang=portuguese&index=2",
-      Year: "2023",
-      ImgUrl: "img/SeteSois/pt",
+      Year: "",
+      ImgUrl: "img/Premier/pt",
       PageNumbers: 12,
       Obs: "",
     },
@@ -171,31 +176,101 @@ const getProjectData = (language, projectIndex) => {
   return dataProjects[language][projectIndex];
 };
 
+// const populateProjectPage = (project) => {
+//   document.getElementById("projectTitle").textContent = project.Title;
+//   document.getElementById("projectTags").textContent = project.Tags;
+//   document.getElementById("projectYear").textContent = project.Year;
+//   document.getElementById("projectObs").textContent = project.Obs;
+//   document.getElementById("projectSite").innerHTML = project.Link;
+
+//   const projectPagesDiv = document.getElementById("projectPages");
+//   projectPagesDiv.innerHTML = "";
+
+//   for (let i = 1; i <= project.PageNumbers; i++) {
+//     const img = document.createElement("img");
+//     img.src = `../${project.ImgUrl}/${i}.png`;
+//     img.alt = `Page ${i}`;
+//     projectPagesDiv.appendChild(img);
+//   }
+// };
+
+// const loadProjectPage = () => {
+//   const urlParams = new URLSearchParams(window.location.search);
+//   const language = urlParams.get("lang") || "english";
+//   const projectIndex = parseInt(urlParams.get("index"), 10) || 0;
+
+//   const project = getProjectData(language, projectIndex);
+//   populateProjectPage(project);
+// };
+
 const populateProjectPage = (project) => {
-  document.getElementById("projectTitle").textContent = project.Title;
-  document.getElementById("projectTags").textContent = project.Tags;
-  document.getElementById("projectYear").textContent = project.Year;
-  document.getElementById("projectObs").textContent = project.Obs;
-  document.getElementById("projectSite").innerHTML = project.Link;
-
+  // Verifica se os elementos existem antes de tentar preencher (evita erros no console)
+  const titleEl = document.getElementById("projectTitle");
+  const tagsEl = document.getElementById("projectTags");
+  const yearEl = document.getElementById("projectYear");
+  const obsEl = document.getElementById("projectObs");
+  const siteEl = document.getElementById("projectSite");
   const projectPagesDiv = document.getElementById("projectPages");
-  projectPagesDiv.innerHTML = "";
 
-  for (let i = 1; i <= project.PageNumbers; i++) {
-    const img = document.createElement("img");
-    img.src = `../${project.ImgUrl}/${i}.png`;
-    img.alt = `Page ${i}`;
-    projectPagesDiv.appendChild(img);
+  if (titleEl) titleEl.textContent = project.Title;
+  if (tagsEl) tagsEl.textContent = project.Tags;
+  if (yearEl) yearEl.textContent = project.Year;
+  if (obsEl) obsEl.textContent = project.Obs;
+  if (siteEl) siteEl.innerHTML = project.Link ? project.Link : "";
+
+  if (projectPagesDiv) {
+    projectPagesDiv.innerHTML = ""; // Limpa o container
+
+    for (let i = 1; i <= project.PageNumbers; i++) {
+      // 1. Adiciona a Imagem
+      const img = document.createElement("img");
+      img.src = `../${project.ImgUrl}/${i}.png`;
+      img.alt = `Page ${i}`;
+      img.style.width = "100%";
+      img.style.display = "block";
+      projectPagesDiv.appendChild(img);
+
+      // 2. Insere o Vídeo se for a página correta
+      if (project.VideoSrc && project.VideoAfterPage === i) {
+        const videoContainer = document.createElement("div");
+        videoContainer.className = "dynamic-video-container";
+
+        const iframe = document.createElement("iframe");
+        iframe.src = project.VideoSrc;
+        iframe.frameBorder = "0";
+        iframe.allow =
+          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframe.allowFullscreen = true;
+
+        videoContainer.appendChild(iframe);
+        projectPagesDiv.appendChild(videoContainer);
+      }
+    }
   }
 };
 
+// ESTA FUNÇÃO PRECISA ESTAR ATIVA:
 const loadProjectPage = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const language = urlParams.get("lang") || "english";
   const projectIndex = parseInt(urlParams.get("index"), 10) || 0;
 
   const project = getProjectData(language, projectIndex);
-  populateProjectPage(project);
+  if (project) {
+    populateProjectPage(project);
+  }
 };
+
+// Corrige a chamada aqui também
+function loadLanguagePreference() {
+  const selectedLanguage =
+    localStorage.getItem("selectedLanguage") || "english";
+  updateContent(selectedLanguage);
+
+  // Se estivermos na página de detalhes, carrega o projeto
+  if (window.location.pathname.includes("projectDetails.html")) {
+    loadProjectPage();
+  }
+}
 
 window.onload = loadProjectPage;
