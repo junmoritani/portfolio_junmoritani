@@ -106,7 +106,7 @@ const dataProjects = {
       ProjectLink: "./projectDetails.html?lang=portuguese&index=2",
       Year: "",
       ImgUrl: "img/Premier/pt",
-      PageNumbers: 12,
+      PageNumbers: 10,
       Obs: "",
     },
     // {
