@@ -47,8 +47,9 @@
 
 .cardTitle {
   position: absolute;
+  width: 80%;
   top: 40%;
-  left: 40%;
+  left: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
   opacity: 0; /* Initially invisible */
