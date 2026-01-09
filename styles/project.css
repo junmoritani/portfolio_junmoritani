@@ -40,6 +40,24 @@ img {
   width: 100%;
 }
 
+.backButton {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: #ffffff;
+  font-style: italic;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: #3f375033 0px 4px 4px;
+  font-weight: 300;
+}
+.link-endPage {
+  text-decoration: none;
+}
+
 @media (max-width: 768px) {
   #title {
     width: 90%;

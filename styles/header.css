@@ -43,6 +43,10 @@ header p a {
   text-decoration: none;
 }
 
+#logo-header a {
+  text-align: left;
+}
+
 #logo-header {
   display: flex;
   gap: 20px;

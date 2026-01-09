@@ -219,21 +219,50 @@ body::after {
     width: 80%;
   }
   .profile-header {
-    flex-direction: column;
+    flex-direction: row;
+    align-items: end;
   }
   #text-intro {
-    font-size: 30px;
+    font-size: 25px;
+    text-align: left;
   }
   #text-bio {
-    text-align: center;
+    text-align: start;
     margin-left: 0;
-    margin-top: 15px;
-    font-weight: 300;
+    margin-top: 20px;
     font-size: 18px;
   }
+
+  .cta-section {
+    margin-top: 60px;
+    align-items: end;
+    gap: 30px;
+    font-size: 20px;
+    font-weight: 100;
+  }
+  #text-cta-projects {
+    display: none;
+  }
+  #text-cta-resume {
+    display: none;
+  }
+
+  #text-cta-contact {
+    display: none;
+  }
+
   #buttonsIndex {
     display: flex;
+
     flex-direction: column;
+  }
+
+  body::before,
+  body::after {
+    width: 2100px;
+    height: 1100px;
+
+    background: radial-gradient(circle, #f0e1a1 0%, rgba(240, 225, 161, 0) 50%);
   }
 
   /* #welcome {
