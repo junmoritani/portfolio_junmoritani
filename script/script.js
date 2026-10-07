@@ -1,28 +1,33 @@
-// const swup = new Swup();
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("a.transition-link");
+  if (!link) return;
+  if (
+    event.metaKey ||
+    event.ctrlKey ||
+    event.shiftKey ||
+    event.altKey ||
+    event.button !== 0
+  ) {
+    return;
+  }
 
-// script.js
-document.addEventListener("DOMContentLoaded", (event) => {
-  const transitionLinks = document.querySelectorAll(".transition-link");
+  const targetUrl = link.href;
+  if (!targetUrl || targetUrl === location.href) return;
 
-  transitionLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const targetUrl = e.currentTarget.href; // Use e.currentTarget instead of e.target
-      const content = document.getElementById("content");
+  const content = document.getElementById("content");
+  if (!content) return;
 
-      content.classList.add("fade-out");
+  event.preventDefault();
+  content.classList.add("fade-out");
 
-      setTimeout(() => {
-        window.location.href = targetUrl;
-      }, 500); // Match the duration of the CSS transition
-    });
-  });
+  setTimeout(() => {
+    window.location.href = targetUrl;
+  }, 180);
+});
 
-  // Fade in effect when the page loads
-  window.addEventListener("pageshow", (event) => {
-    if (event.persisted) {
-      const content = document.getElementById("content");
-      content.classList.remove("fade-out");
-    }
-  });
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    const content = document.getElementById("content");
+    if (content) content.classList.remove("fade-out");
+  }
 });

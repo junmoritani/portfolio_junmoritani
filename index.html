@@ -4,36 +4,64 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio | Gustavo Jun</title>
+    <meta
+      name="description"
+      content="Gustavo Jun Moritani — Brazilian UX designer with a background in architecture and urban planning."
+    />
+    <link rel="icon" href="img/Brand/Carinha.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <script defer src="script/script.js"></script>
-    <script defer src="script/index.js"></script>
-    <link rel="stylesheet" href="styles/index.css" />
-    <link rel="stylesheet" href="styles/standard.css" />
-    <link rel="stylesheet" href="styles/toggleSwitch.css" />
+    <link rel="stylesheet" href="styles/standard.css?v=3" />
+    <link rel="stylesheet" href="styles/header.css?v=4" />
+    <link rel="stylesheet" href="styles/index.css?v=10" />
+    <link rel="stylesheet" href="styles/toggleSwitch.css?v=5" />
+    <script defer src="script/script.js?v=3"></script>
+    <script defer src="script/index.js?v=4"></script>
+    <script defer src="script/header.js?v=5"></script>
   </head>
-  <body id="swup" class="transition-fade">
-    <header>
-      <p>
+  <body>
+    <div class="blob-stage" aria-hidden="true">
+      <div class="blob-field">
+        <span class="blob-wrap">
+          <span class="blob blob-a"></span>
+        </span>
+        <span class="blob-wrap">
+          <span class="blob blob-b"></span>
+        </span>
+        <span class="blob-wrap">
+          <span class="blob blob-c"></span>
+        </span>
+        <span class="blob-wrap">
+          <span class="blob blob-d"></span>
+        </span>
+        <span class="blob-wrap">
+          <span class="blob blob-e"></span>
+        </span>
+        <span class="blob-wrap">
+          <span class="blob blob-f"></span>
+        </span>
+      </div>
+    </div>
+    <header class="home-header">
+      <p id="logo-header">
         <a class="transition-link" href="index.html">GUSTAVO JUN MORITANI</a>
       </p>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" class="lang-btn" data-lang="english">EN</button>
+        <span class="lang-sep" aria-hidden="true">|</span>
+        <button type="button" class="lang-btn" data-lang="portuguese">PT</button>
+      </div>
     </header>
     <main class="main fade-container">
       <div id="content">
         <span class="switch">
-          <input type="checkbox" id="switcher" />
+          <input type="checkbox" id="switcher" aria-label="Language" />
           <label for="switcher"></label>
         </span>
-
         <div id="main-content">
           <div class="profile-header">
             <img
@@ -89,7 +117,5 @@
         </div>
       </div>
     </main>
-    <!-- <script src="node_modules/swup/dist/Swup.umd.js"></script>
-    <script src="script/script.js"></script> -->
   </body>
 </html>

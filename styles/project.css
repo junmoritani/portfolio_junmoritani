@@ -5,20 +5,55 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* background-color: black; */
 }
 
-#title {
-  width: 70%;
+.case-header {
+  width: min(70%, 800px);
+  margin: 48px auto 32px;
 }
 
-#title-main {
-  margin: 60px 0 10px 0;
+.case-header h1 {
+  margin: 8px 0 16px;
+  font-size: 42px;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.project-kicker {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.project-outcome {
   font-size: 20px;
+  font-weight: 300;
+  line-height: 1.45;
+  max-width: 40rem;
 }
-#title-main h1 {
-  margin-bottom: 10px;
-  font-size: 50px;
+
+.project-impact {
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-top: 24px;
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.project-obs {
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 300;
+  font-style: italic;
 }
 
 .project-pages {
@@ -29,63 +64,56 @@
   width: 70%;
   max-width: 800px;
   gap: 5px;
-  /* background-color: aqua; */
-}
-
-#title-observation {
-  padding: 50px 0;
-}
-
-img {
-  width: 100%;
 }
 
 .backButton {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  padding: 10px 20px;
+  margin: 50px 0;
   background-color: #ffffff;
-  font-style: italic;
   border-radius: 30px;
   text-decoration: none;
   box-shadow: #3f375033 0px 4px 4px;
   font-weight: 300;
 }
+
 .link-endPage {
   text-decoration: none;
 }
 
-@media (max-width: 768px) {
-  #title {
-    width: 90%;
-    text-align: center;
-  }
-  .project-pages {
-    align-items: center;
-    width: 100%;
-  }
-  #title-main h1 {
-    font-size: 35px;
-  }
+#projectPages img {
+  display: block;
+  width: 100%;
 }
 
 .dynamic-video-container {
-  width: 80%;
+  width: 100%;
   margin: 30px 0;
-  background: #000; /* Fundo preto caso o vídeo seja menor que a largura */
+  background: #000;
 }
 
-.dynamic-video-container video {
-  width: 80%;
+.dynamic-video-container video,
+.dynamic-video-container iframe {
+  width: 100%;
   height: auto;
   display: block;
 }
 
-/* Garante que as imagens não tenham espaço extra entre elas */
-#projectPages img {
-  display: block;
-  width: 100%;
+@media (max-width: 768px) {
+  .case-header,
+  .project-pages {
+    width: 90%;
+  }
+
+  .case-header {
+    text-align: left;
+    margin-top: 24px;
+  }
+
+  .case-header h1 {
+    font-size: 28px;
+  }
+
+  .project-pages {
+    align-items: center;
+  }
 }

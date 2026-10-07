@@ -16,7 +16,7 @@ const data = {
     bio: "Um UX Designer brasileiro com formação em arquitetura e urbanismo.<br/>Sou apaixonado por explorar ferramentas físicas e digitais para criar interfaces intuitivas e promover interações significativas.",
     ctaProjects: "Dê uma olhada no que venho construindo em",
     btnProjects: "MEUS PROJETOS",
-    ctaResume: "Curioso sobre minha história? Leia meu",
+    ctaResume: "Quer conhecer minha trajetória? Leia meu",
     linkResumeLabel: "CURRÍCULO",
     ctaContact: "Tem uma ideia em mente? Adoraria ouvir de você.",
     btnContact: "CONTATO",
@@ -25,7 +25,6 @@ const data = {
   },
 };
 
-// Função para atualizar os elementos (usada no load inicial e no clique)
 function applyTexts(langData) {
   document.getElementById("text-intro").innerHTML = langData.intro;
   document.getElementById("text-bio").innerHTML = langData.bio;
@@ -38,43 +37,77 @@ function applyTexts(langData) {
   document.getElementById("btn-contact").innerHTML = langData.btnContact;
 }
 
-function updateContent(language) {
-  localStorage.setItem("selectedLanguage", language);
-  const langData = data[language];
-  const contentDiv = document.getElementById("main-content");
+function initBlobCursor() {
+  const stage = document.querySelector(".blob-stage");
+  const wraps = [...document.querySelectorAll(".blob-wrap")];
+  if (!stage || !wraps.length) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (!window.matchMedia("(pointer: fine)").matches) return;
 
-  contentDiv.classList.add("fade-out");
+  const target = {
+    x: window.innerWidth / 2,
+    y: window.innerHeight / 2,
+    active: false,
+  };
+  const current = { x: target.x, y: target.y, hole: 0 };
+  const wrapState = wraps.map(() => ({ x: 0, y: 0 }));
 
-  setTimeout(() => {
-    applyTexts(langData);
-    contentDiv.classList.remove("fade-out");
-  }, 500);
-}
+  const holeSize = () => Math.min(260, Math.max(160, window.innerWidth * 0.2));
 
-function loadLanguagePreference() {
-  const selectedLanguage =
-    localStorage.getItem("selectedLanguage") || "english";
-  const switcher = document.getElementById("switcher");
+  window.addEventListener("pointermove", (event) => {
+    if (event.pointerType === "touch") return;
+    target.x = event.clientX;
+    target.y = event.clientY;
+    target.active = true;
+  });
 
-  if (switcher) {
-    // Sincroniza o switch
-    switcher.checked = selectedLanguage === "portuguese";
+  document.documentElement.addEventListener("mouseleave", () => {
+    target.active = false;
+  });
 
-    // Adiciona o ouvinte de evento aqui dentro, garantindo que o elemento existe
-    switcher.addEventListener("change", function () {
-      updateContent(this.checked ? "portuguese" : "english");
+  function tick() {
+    current.x += (target.x - current.x) * 0.14;
+    current.y += (target.y - current.y) * 0.14;
+    const nextHole = target.active ? holeSize() : 0;
+    current.hole += (nextHole - current.hole) * 0.12;
+
+    stage.style.setProperty("--mx", `${current.x}px`);
+    stage.style.setProperty("--my", `${current.y}px`);
+    stage.style.setProperty("--hole", `${current.hole}px`);
+
+    wraps.forEach((wrap, index) => {
+      const blob = wrap.querySelector(".blob");
+      const box = blob.getBoundingClientRect();
+      const cx = box.left + box.width / 2 - wrapState[index].x;
+      const cy = box.top + box.height / 2 - wrapState[index].y;
+      const dx = cx - current.x;
+      const dy = cy - current.y;
+      const dist = Math.hypot(dx, dy) || 1;
+      const radius = Math.max(box.width, box.height) * 0.42 + current.hole * 0.55;
+
+      let tx = 0;
+      let ty = 0;
+      if (target.active && dist < radius) {
+        const force = (1 - dist / radius) * 64;
+        tx = (dx / dist) * force;
+        ty = (dy / dist) * force;
+      }
+
+      wrapState[index].x += (tx - wrapState[index].x) * 0.1;
+      wrapState[index].y += (ty - wrapState[index].y) * 0.1;
+      wrap.style.setProperty("--rx", `${wrapState[index].x}px`);
+      wrap.style.setProperty("--ry", `${wrapState[index].y}px`);
     });
+
+    requestAnimationFrame(tick);
   }
 
-  // Aplica os textos imediatamente sem animação
+  requestAnimationFrame(tick);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const selectedLanguage =
+    localStorage.getItem("selectedLanguage") || "english";
   applyTexts(data[selectedLanguage]);
-}
-
-// Única chamada necessária para iniciar tudo
-document.addEventListener("DOMContentLoaded", loadLanguagePreference);
-
-if (typeof swup !== "undefined") {
-  swup.hooks.on("page:view", () => {
-    loadLanguagePreference();
-  });
-}
+  initBlobCursor();
+});
