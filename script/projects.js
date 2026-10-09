@@ -32,7 +32,7 @@ const dataProjects = {
       Obs: "",
     },
     {
-      Title: "Narratives of Baixão",
+      Title: "Narratives of Bação",
       Tags: "UX Research",
       Role: "UX research · systems thinking",
       ImgLink: "img/covers/Narratives of Bacao.png",
