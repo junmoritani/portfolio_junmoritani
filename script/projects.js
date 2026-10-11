@@ -96,7 +96,7 @@ const dataProjects = {
       Obs: "",
     },
     {
-      Title: "Narrativas do Baixão",
+      Title: "Narrativas do Bação",
       Tags: "Pesquisa UX",
       Role: "Pesquisa UX · pensamento sistêmico",
       ImgLink: "img/covers/Narratives of Bacao.png",
