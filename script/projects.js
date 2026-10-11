@@ -148,9 +148,31 @@ const generateProjectCards = (projects) => {
 
 function updateGallery(language) {
   const boxCards = document.getElementById("boxCards");
-  if (boxCards) {
-    boxCards.innerHTML = generateProjectCards(dataProjects[language]);
+  if (!boxCards) return;
+
+  const projects = dataProjects[language];
+  const cards = [...boxCards.querySelectorAll(".cardProject")];
+
+  if (cards.length === projects.length) {
+    cards.forEach((card, index) => {
+      const project = projects[index];
+      card.href = project.ProjectLink;
+      const img = card.querySelector("img");
+      if (img) {
+        img.src = project.ImgLink;
+        img.alt = project.Title;
+      }
+      const title = card.querySelector(".title");
+      const outcome = card.querySelector(".outcome");
+      const tags = card.querySelector(".tags");
+      if (title) title.textContent = project.Title;
+      if (outcome) outcome.textContent = project.Outcome;
+      if (tags) tags.textContent = project.Tags;
+    });
+    return;
   }
+
+  boxCards.innerHTML = generateProjectCards(projects);
 }
 
 const populateProjectPage = (project) => {
@@ -184,8 +206,7 @@ const populateProjectPage = (project) => {
     document.title = `${project.Title} | Gustavo Jun`;
   }
 
-  if (projectPagesDiv) {
-    projectPagesDiv.innerHTML = "";
+  if (projectPagesDiv && projectPagesDiv.childElementCount === 0) {
 
     for (let i = 1; i <= project.PageNumbers; i++) {
       const img = document.createElement("img");

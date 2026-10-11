@@ -63,10 +63,15 @@ function updateContentHeader(language) {
   if (goback) goback.textContent = pack.goback;
 }
 
-function setLanguage(language) {
-  localStorage.setItem("selectedLanguage", language);
-  applyDocumentLang(language);
-  updateLangButtons(language);
+function getLangAnimTargets() {
+  return [
+    ...document.querySelectorAll(
+      "#text-intro, #text-bio, .cta-section p, #projects, #contact, #resume, #goback, #boxCards .cardTitle, #title, #label-name, #label-email, #label-message, #btSubmit, #msgInfo, .case-header, #projectObs"
+    ),
+  ];
+}
+
+function applyLanguageContent(language) {
   updateContentHeader(language);
 
   if (typeof applyTexts === "function" && document.getElementById("text-intro")) {
@@ -86,11 +91,59 @@ function setLanguage(language) {
 
   if (location.pathname.includes("projectDetails.html")) {
     const params = new URLSearchParams(location.search);
-    if (params.get("lang") !== language) {
-      params.set("lang", language);
-      location.search = params.toString();
+    params.set("lang", language);
+    const nextSearch = `?${params.toString()}`;
+    if (location.search !== nextSearch) {
+      history.replaceState({}, "", `${location.pathname}${nextSearch}`);
+    }
+    if (typeof loadProjectPage === "function") {
+      loadProjectPage();
     }
   }
+}
+
+function playLangSwap(targets, onSwap) {
+  targets.forEach((el) => {
+    el.classList.add("lang-swap", "is-out");
+    el.classList.remove("is-in");
+  });
+
+  window.setTimeout(() => {
+    onSwap();
+    const nextTargets = getLangAnimTargets();
+    nextTargets.forEach((el, index) => {
+      el.classList.remove("is-out", "is-in", "lang-swap");
+      void el.offsetWidth;
+      el.classList.add("lang-swap", "is-in");
+      el.style.setProperty("--lang-delay", `${Math.min(index, 8) * 35}ms`);
+      el.addEventListener(
+        "animationend",
+        (event) => {
+          if (event.target !== el) return;
+          el.classList.remove("lang-swap", "is-in");
+          el.style.removeProperty("--lang-delay");
+        },
+        { once: true }
+      );
+    });
+  }, 170);
+}
+
+function setLanguage(language) {
+  localStorage.setItem("selectedLanguage", language);
+  applyDocumentLang(language);
+  updateLangButtons(language);
+
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const targets = getLangAnimTargets();
+  const apply = () => applyLanguageContent(language);
+
+  if (reduced || !targets.length) {
+    apply();
+    return;
+  }
+
+  playLangSwap(targets, apply);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

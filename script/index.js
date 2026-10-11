@@ -52,7 +52,8 @@ function initBlobCursor() {
   const current = { x: target.x, y: target.y, hole: 0 };
   const wrapState = wraps.map(() => ({ x: 0, y: 0 }));
 
-  const holeSize = () => Math.min(260, Math.max(160, window.innerWidth * 0.2));
+  const holeSize = () =>
+    Math.max(180, Math.min(window.innerWidth * 0.14, window.innerHeight * 0.22));
 
   window.addEventListener("pointermove", (event) => {
     if (event.pointerType === "touch") return;

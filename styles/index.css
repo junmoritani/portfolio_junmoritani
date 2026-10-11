@@ -72,7 +72,7 @@ body {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  filter: blur(48px);
+  filter: blur(clamp(40px, 3.2vw, 120px));
 }
 
 .blob-wrap {
@@ -96,54 +96,27 @@ body {
 }
 
 .blob-a {
-  width: min(78vw, 980px);
-  height: min(78vw, 980px);
-  top: -28%;
-  right: -22%;
+  width: max(82vw, 88vh);
+  height: max(82vw, 88vh);
+  top: -32%;
+  right: -24%;
   animation: blobMeetA 22s ease-in-out infinite;
 }
 
 .blob-b {
-  width: min(72vw, 900px);
-  height: min(72vw, 900px);
-  bottom: -30%;
-  left: -20%;
+  width: max(76vw, 82vh);
+  height: max(76vw, 82vh);
+  bottom: -34%;
+  left: -22%;
   animation: blobMeetB 22s ease-in-out infinite;
 }
 
 .blob-c {
-  width: min(46vw, 560px);
-  height: min(46vw, 560px);
-  top: 32%;
-  left: 42%;
+  width: max(54vw, 58vh);
+  height: max(54vw, 58vh);
+  top: 28%;
+  left: 38%;
   animation: blobMeetC 16s ease-in-out infinite;
-}
-
-.blob-d {
-  width: min(40vw, 480px);
-  height: min(40vw, 480px);
-  top: -12%;
-  left: -8%;
-  opacity: 0.55;
-  animation: blobMeetD 20s ease-in-out infinite;
-}
-
-.blob-e {
-  width: min(52vw, 640px);
-  height: min(52vw, 640px);
-  bottom: -18%;
-  right: -14%;
-  opacity: 0.58;
-  animation: blobMeetE 26s ease-in-out infinite;
-}
-
-.blob-f {
-  width: min(34vw, 400px);
-  height: min(34vw, 400px);
-  top: 8%;
-  left: 28%;
-  opacity: 0.5;
-  animation: blobMeetF 18s ease-in-out infinite;
 }
 
 @keyframes blobMeetA {
@@ -219,54 +192,6 @@ body {
   75% {
     transform: translate(-8vw, 10vh) scale(1.06) rotate(12deg);
     border-radius: 44% 56% 60% 40% / 52% 48% 46% 54%;
-  }
-}
-
-@keyframes blobMeetD {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1) rotate(0deg);
-    border-radius: 46% 54% 50% 50% / 58% 42% 48% 52%;
-  }
-  33% {
-    transform: translate(18vw, 16vh) scale(1.14, 0.88) rotate(-18deg);
-    border-radius: 62% 38% 44% 56% / 36% 64% 40% 60%;
-  }
-  66% {
-    transform: translate(8vw, 28vh) scale(0.92, 1.1) rotate(14deg);
-    border-radius: 40% 60% 55% 45% / 52% 48% 62% 38%;
-  }
-}
-
-@keyframes blobMeetE {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1.02) rotate(0deg);
-    border-radius: 54% 46% 48% 52% / 44% 56% 50% 50%;
-  }
-  30% {
-    transform: translate(-16vw, -14vh) scale(1.1, 0.9) rotate(16deg);
-    border-radius: 38% 62% 52% 48% / 60% 40% 58% 42%;
-  }
-  60% {
-    transform: translate(-28vw, -8vh) scale(0.88, 1.14) rotate(-12deg);
-    border-radius: 66% 34% 40% 60% / 32% 68% 46% 54%;
-  }
-}
-
-@keyframes blobMeetF {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(0.95) rotate(0deg);
-    border-radius: 50% 50% 46% 54% / 42% 58% 50% 50%;
-  }
-  40% {
-    transform: translate(14vw, 20vh) scale(1.16, 0.84) rotate(-22deg);
-    border-radius: 30% 70% 48% 52% / 68% 32% 60% 40%;
-  }
-  70% {
-    transform: translate(-10vw, 8vh) scale(1.04) rotate(10deg);
-    border-radius: 58% 42% 36% 64% / 48% 52% 44% 56%;
   }
 }
 /* #welcome {
@@ -454,20 +379,13 @@ body {
 
   .blob-a,
   .blob-b {
-    width: min(78vw, 560px);
-    height: min(78vw, 560px);
+    width: max(88vw, 70vh);
+    height: max(88vw, 70vh);
   }
 
-  .blob-c,
-  .blob-d,
-  .blob-f {
-    width: min(52vw, 340px);
-    height: min(52vw, 340px);
-  }
-
-  .blob-e {
-    width: min(64vw, 420px);
-    height: min(64vw, 420px);
+  .blob-c {
+    width: max(68vw, 52vh);
+    height: max(68vw, 52vh);
   }
 
   /* #welcome {
