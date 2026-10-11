@@ -11,6 +11,10 @@ document.addEventListener("click", (event) => {
     return;
   }
 
+  // Cursor's browser (and some file:// views) block JS navigation after
+  // preventDefault, so let the browser follow the href normally.
+  if (location.protocol === "file:") return;
+
   const targetUrl = link.href;
   if (!targetUrl || targetUrl === location.href) return;
 
@@ -21,7 +25,7 @@ document.addEventListener("click", (event) => {
   content.classList.add("fade-out");
 
   setTimeout(() => {
-    window.location.href = targetUrl;
+    window.location.assign(targetUrl);
   }, 180);
 });
 
